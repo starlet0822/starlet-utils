@@ -1,12 +1,26 @@
 {
   "name": "starlet-utils",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "this is a utils lib",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.mjs",
+  "typings": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.mjs",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "tsc": "tsc index.ts",
+    "build:types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
     "build:bundle": "node ./build.js",
+    "build": "pnpm build:bundle && pnpm build:types",
+    "clean:lib": "rimraf node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "publishConfig": {
@@ -21,7 +35,8 @@
   "homepage": "",
   "bugs": "https://github.com/starlet0822/starlet-utils/issues",
   "dependencies": {
-    "@vue/shared": "^3.3.4"
+    "@vue/shared": "^3.3.4",
+    "lodash-unified": "^1.0.3"
   },
   "devDependencies": {
     "esbuild": "^0.18.11",
