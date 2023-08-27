@@ -1,2 +1,5 @@
 export * from './types'
+export * from './strings'
 export * from './arrays'
+export * from './funtions'
+export * from './objects'

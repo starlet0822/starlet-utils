@@ -20,6 +20,12 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  NOOP: () => NOOP,
+  camelize: () => camelize,
+  capitalize: () => capitalize2,
+  escapeStringRegexp: () => escapeStringRegexp,
+  hasOwn: () => hasOwn,
+  hyphenate: () => hyphenate,
   isArray: () => isArray,
   isBoolean: () => isBoolean,
   isDate: () => isDate,
@@ -34,6 +40,7 @@ __export(src_exports, {
   isStringNumber: () => isStringNumber,
   isSymbol: () => isSymbol,
   isUndefined: () => isUndefined,
+  kebabCase: () => hyphenate,
   unique: () => unique
 });
 module.exports = __toCommonJS(src_exports);
@@ -49,6 +56,8 @@ function makeMap(str, expectsLowerCase) {
 }
 var EMPTY_OBJ = true ? Object.freeze({}) : {};
 var EMPTY_ARR = true ? Object.freeze([]) : [];
+var NOOP = () => {
+};
 var isArray = Array.isArray;
 var isDate = (val) => toTypeString(val) === "[object Date]";
 var isFunction = (val) => typeof val === "function";
@@ -112,8 +121,16 @@ var isStringNumber = (val) => {
   return !Number.isNaN(Number(val));
 };
 
+// src/strings.ts
+var escapeStringRegexp = (string = "") => string.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
+var capitalize2 = (str) => capitalize(str);
+
 // src/arrays.ts
 var unique = (arr) => [...new Set(arr)];
+
+// src/objects.ts
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var hasOwn = (val, key) => hasOwnProperty.call(val, key);
 /*! Bundled license information:
 
 lodash-es/lodash.js:

@@ -9,6 +9,8 @@ function makeMap(str, expectsLowerCase) {
 }
 var EMPTY_OBJ = true ? Object.freeze({}) : {};
 var EMPTY_ARR = true ? Object.freeze([]) : [];
+var NOOP = () => {
+};
 var isArray = Array.isArray;
 var isDate = (val) => toTypeString(val) === "[object Date]";
 var isFunction = (val) => typeof val === "function";
@@ -72,9 +74,23 @@ var isStringNumber = (val) => {
   return !Number.isNaN(Number(val));
 };
 
+// src/strings.ts
+var escapeStringRegexp = (string = "") => string.replace(/[|\\{}()[\]^$+*?.]/g, "\\$&").replace(/-/g, "\\x2d");
+var capitalize2 = (str) => capitalize(str);
+
 // src/arrays.ts
 var unique = (arr) => [...new Set(arr)];
+
+// src/objects.ts
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var hasOwn = (val, key) => hasOwnProperty.call(val, key);
 export {
+  NOOP,
+  camelize,
+  capitalize2 as capitalize,
+  escapeStringRegexp,
+  hasOwn,
+  hyphenate,
   isArray,
   isBoolean,
   isDate,
@@ -89,6 +105,7 @@ export {
   isStringNumber,
   isSymbol,
   isUndefined,
+  hyphenate as kebabCase,
   unique
 };
 /*! Bundled license information:
