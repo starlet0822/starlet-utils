@@ -1,6 +1,6 @@
 {
   "name": "starlet-utils",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "this is a utils lib",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.mjs",
@@ -14,14 +14,13 @@
   },
   "sideEffects": false,
   "files": [
-    "index.js",
     "dist"
   ],
   "scripts": {
     "build:types": "tsc -p ./tsconfig.json --emitDeclarationOnly",
-    "build:bundle": "node ./build.js",
-    "build": "pnpm build:bundle && pnpm build:types",
-    "clean:dist": "rimraf dist",
+    "build:bundle": "pnpm clean:dist && node ./build.js",
+    "build": "pnpm clean:dist && build:bundle && pnpm build:types",
+    "clean:dist": "rimraf ./dist",
     "clean:lib": "rimraf node_modules",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
