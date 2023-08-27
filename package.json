@@ -1,0 +1,31 @@
+{
+  "name": "starlet-utils",
+  "version": "1.0.5",
+  "description": "this is a utils lib",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.mjs",
+  "scripts": {
+    "tsc": "tsc index.ts",
+    "build:bundle": "node ./build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "author": "starlet0822 <2411147266@qq.com>",
+  "license": "MIT",
+  "homepage": "",
+  "bugs": "https://github.com/starlet0822/starlet-utils/issues",
+  "dependencies": {
+    "@vue/shared": "^3.3.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.18.11",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.0.4"
+  }
+}
